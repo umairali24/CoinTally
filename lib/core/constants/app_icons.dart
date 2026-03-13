@@ -1,0 +1,110 @@
+import 'package:flutter/material.dart';
+
+class AppIcons {
+  static const Map<String, List<IconData>> expenseGroupedIcons = {
+    'Housing & Utilities': [
+      Icons.home_rounded,
+      Icons.apartment_rounded,
+      Icons.water_drop_rounded,
+      Icons.bolt_rounded,
+      Icons.wifi_rounded,
+      Icons.local_fire_department_rounded,
+      Icons.cleaning_services_rounded,
+    ],
+    'Food & Dining': [
+      Icons.restaurant_rounded,
+      Icons.local_cafe_rounded,
+      Icons.fastfood_rounded,
+      Icons.local_pizza_rounded,
+      Icons.bakery_dining_rounded,
+      Icons.local_grocery_store_rounded,
+    ],
+    'Transportation & Travel': [
+      Icons.directions_car_rounded,
+      Icons.local_gas_station_rounded,
+      Icons.directions_bus_rounded,
+      Icons.train_rounded,
+      Icons.two_wheeler_rounded,
+      Icons.flight_takeoff_rounded,
+      Icons.local_taxi_rounded,
+    ],
+    'Shopping & Personal Care': [
+      Icons.shopping_bag_rounded,
+      Icons.shopping_cart_rounded,
+      Icons.checkroom_rounded,
+      Icons.content_cut_rounded,
+      Icons.face_retouching_natural_rounded,
+      Icons.local_laundry_service_rounded,
+    ],
+    'Health & Fitness': [
+      Icons.fitness_center_rounded,
+      Icons.sports_tennis_rounded,
+      Icons.local_hospital_rounded,
+      Icons.medical_services_rounded,
+      Icons.medication_rounded,
+      Icons.spa_rounded,
+    ],
+    'Entertainment & Leisure': [
+      Icons.movie_rounded,
+      Icons.sports_esports_rounded,
+      Icons.palette_rounded,
+      Icons.music_note_rounded,
+      Icons.stadium_rounded,
+      Icons.park_rounded,
+      Icons.subscriptions_rounded,
+    ],
+    'Family, Education & Pets': [
+      Icons.family_restroom_rounded,
+      Icons.child_care_rounded,
+      Icons.school_rounded,
+      Icons.menu_book_rounded,
+      Icons.pets_rounded,
+      Icons.volunteer_activism_rounded,
+    ],
+    'Tech & Miscellaneous': [
+      Icons.smartphone_rounded,
+      Icons.computer_rounded,
+      Icons.build_circle_rounded,
+      Icons.card_giftcard_rounded,
+      Icons.category_rounded,
+    ],
+  };
+
+  static const Map<String, List<IconData>> incomeGroupedIcons = {
+    'Finance & Salary': [
+      Icons.account_balance_rounded,
+      Icons.account_balance_wallet_rounded,
+      Icons.savings_rounded,
+      Icons.trending_up_rounded,
+      Icons.work_rounded,
+      Icons.receipt_long_rounded,
+      Icons.payments_rounded,
+      Icons.attach_money_rounded,
+      Icons.price_change_rounded,
+      Icons.request_quote_rounded,
+    ],
+    'Business & Trade': [
+      Icons.storefront_rounded,
+      Icons.currency_exchange_rounded,
+      Icons.sell_rounded,
+      Icons.handshake_rounded,
+      Icons.point_of_sale_rounded,
+      Icons.inventory_rounded,
+    ],
+    'Investing & Assets': [
+      Icons.real_estate_agent_rounded,
+      Icons.show_chart_rounded,
+      Icons.pie_chart_rounded,
+      Icons.stacked_line_chart_rounded,
+      Icons.monetization_on_rounded,
+      Icons.domain_rounded,
+    ],
+    'Gifts & Bonuses': [
+      Icons.card_giftcard_rounded,
+      Icons.volunteer_activism_rounded,
+      Icons.emoji_events_rounded,
+      Icons.redeem_rounded,
+      Icons.celebration_rounded,
+    ],
+  };
+}
