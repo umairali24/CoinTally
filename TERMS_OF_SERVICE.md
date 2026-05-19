@@ -52,7 +52,7 @@ To the maximum extent permitted by law, the developers of CoinTally shall not be
 These Terms shall be governed by and construed in accordance with the laws of **Pakistan**, without regard to its conflict of law provisions.
 
 ## 10. Contact Us
-If you have any questions about these Terms, please contact us at: **[support@cointally.com]**
+If you have any questions about these Terms, please contact us at: **[support@cointally.app]**
 
 ---
 *By using CoinTally, you acknowledge that you have read and understood these Terms of Service.*
