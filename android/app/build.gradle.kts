@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -6,9 +8,42 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.inputStream().use { keystoreProperties.load(it) }
+}
+
+fun signingValue(propertyName: String, environmentName: String): String? {
+    return (keystoreProperties[propertyName] as String?) ?: System.getenv(environmentName)
+}
+
+val releaseStoreFilePath = signingValue("storeFile", "COINTALLY_STORE_FILE")
+    ?: "../cointally-release-key.jks"
+val releaseStorePassword = signingValue("storePassword", "COINTALLY_STORE_PASSWORD")
+val releaseKeyAlias = signingValue("keyAlias", "COINTALLY_KEY_ALIAS")
+val releaseKeyPassword = signingValue("keyPassword", "COINTALLY_KEY_PASSWORD")
+val releaseStoreFile = rootProject.file(releaseStoreFilePath)
+val releaseSigningConfigured = releaseStoreFile.exists() &&
+    !releaseStorePassword.isNullOrBlank() &&
+    !releaseKeyAlias.isNullOrBlank() &&
+    !releaseKeyPassword.isNullOrBlank()
+
+gradle.taskGraph.whenReady {
+    val requestedReleaseBuild = allTasks.any { task ->
+        task.name.contains("Release", ignoreCase = true)
+    }
+    if (requestedReleaseBuild && !releaseSigningConfigured) {
+        throw GradleException(
+            "Release signing requires android/key.properties or COINTALLY_* environment variables. " +
+                "Expected keystore at ${releaseStoreFile.path}."
+        )
+    }
+}
+
 android {
     namespace = "com.cointally.app"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -27,16 +62,25 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        create("release") {
+            if (releaseSigningConfigured) {
+                storeFile = releaseStoreFile
+                storePassword = releaseStorePassword
+                keyAlias = releaseKeyAlias
+                keyPassword = releaseKeyPassword
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 }

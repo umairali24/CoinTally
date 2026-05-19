@@ -49,6 +49,9 @@ google-services.json
 GoogleService-Info.plist
 .env*
 secrets.xml
+*.jks
+*.keystore
+android/key.properties
 
 # Local Databases & Logs
 *.db
