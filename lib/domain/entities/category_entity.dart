@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cointally/core/constants/app_icons.dart';
 
 class CategoryEntity {
   final int? id;
@@ -31,15 +32,40 @@ class CategoryEntity {
     return CategoryEntity(
       id: map['id'] as int?,
       name: map['name'] as String,
-      icon: IconData(
+      icon: _iconFromStoredValues(
         map['icon_code'] as int,
-        fontFamily: map['icon_family'] as String?,
-        fontPackage: map['icon_package'] as String?,
+        map['icon_family'] as String?,
+        map['icon_package'] as String?,
       ),
       color: _parseColor(map['color_hex'] as String?),
       type: map['type'] as String? ?? 'EXPENSE',
     );
   }
+
+  static IconData _iconFromStoredValues(
+    int codePoint,
+    String? fontFamily,
+    String? fontPackage,
+  ) {
+    for (final icon in _supportedIcons) {
+      if (icon.codePoint == codePoint &&
+          icon.fontFamily == fontFamily &&
+          icon.fontPackage == fontPackage) {
+        return icon;
+      }
+    }
+
+    return Icons.category_rounded;
+  }
+
+  static final List<IconData> _supportedIcons = [
+    for (final icons in AppIcons.expenseGroupedIcons.values) ...icons,
+    for (final icons in AppIcons.incomeGroupedIcons.values) ...icons,
+    Icons.category_rounded,
+    Icons.help_outline,
+    Icons.receipt_long_rounded,
+    Icons.volunteer_activism,
+  ];
 
   static Color _parseColor(String? hex) {
     if (hex == null || hex.isEmpty) return const Color(0xFF13EC13);
