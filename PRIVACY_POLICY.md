@@ -40,6 +40,15 @@ CoinTally integrates with the following third-party services:
 ## 4. Changes to This Privacy Policy
 We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this screen and updating the "Last Updated" date.
 
+## 5. Account and Data Deletion Request
+
+CoinTally values your privacy and gives you full control over your financial data. Since CoinTally does not store your financial data on external servers, you can delete your account-related data and all associated app data at any time by following these steps:
+
+1. In-App Deletion: Open CoinTally on your device, navigate to Settings > Advanced, and tap "Clear All Data". This instantly and permanently deletes your local SQLite database from your phone's storage.
+2. Cloud Backup Deletion: If you enabled Google Drive backups, open your personal Google Drive app, look for the "CoinTally_Backup" folder, and delete it.
+3. Revoke Authentication: You can revoke CoinTally's access to your Google account at any time from your Google Account Security Settings: https://myaccount.google.com/permissions.
+
+
 ## 5. Contact Us
 If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.
 
